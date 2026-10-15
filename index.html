@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Color Clash Cubes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2b1b66">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Color Clash Cubes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Color Clash Cubes - a colorful cube-building board game invented by Gabriela Rubio. Pass-and-play for 2 to 4 players.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+<div id="app" class="app">
+
+  <!-- ============ TITLE ============ -->
+  <section id="screen-title" class="screen active" aria-label="Title">
+    <div class="floaty f1"></div><div class="floaty f2"></div><div class="floaty f3"></div><div class="floaty f4"></div><div class="floaty f5"></div><div class="floaty f6"></div>
+    <div class="title-wrap">
+      <div class="title-cubes" id="titleCubes" aria-hidden="true"></div>
+      <h1 class="title">Color Clash <span class="title-cubes-word">Cubes</span></h1>
+      <p class="credit" id="credit">Invented by Gabriela Rubio</p>
+      <div class="title-buttons">
+        <button class="btn btn-big btn-go" id="btn-play" type="button">Play!</button>
+        <button class="btn btn-soft" id="btn-how" type="button">How to play</button>
+      </div>
+    </div>
+    <button class="icon-btn sound-btn" id="btn-sound-title" type="button" aria-label="Sound off. Tap to turn sound on.">🔇</button>
+  </section>
+
+  <!-- ============ SETUP ============ -->
+  <section id="screen-setup" class="screen" aria-label="Choose players">
+    <div class="setup-wrap">
+      <h2 class="h2">Who is playing?</h2>
+      <div class="count-row" id="countRow" role="group" aria-label="Number of players">
+        <button class="count-btn" type="button" data-n="2">2</button>
+        <button class="count-btn" type="button" data-n="3">3</button>
+        <button class="count-btn" type="button" data-n="4">4</button>
+      </div>
+      <div class="player-list" id="playerList"></div>
+      <p class="tiny">Names stay on this device.</p>
+      <div class="setup-buttons">
+        <button class="btn btn-soft" id="btn-setup-back" type="button">Back</button>
+        <button class="btn btn-big btn-go" id="btn-start" type="button">Let's play!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GAME ============ -->
+  <section id="screen-game" class="screen" aria-label="Game">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-menu" type="button" aria-label="Menu">☰</button>
+      <div class="turnbanner" id="turnBanner" aria-live="polite"></div>
+      <button class="icon-btn" id="btn-sound" type="button" aria-label="Sound off. Tap to turn sound on.">🔇</button>
+    </header>
+    <div class="game-main">
+      <div class="board-wrap">
+        <div class="board" id="board" aria-label="Scoreboard"></div>
+      </div>
+      <div class="play-col">
+        <div class="stage" id="stage">
+          <div class="dice" id="dice">
+            <div class="die-slot"><div class="die num" id="dieNum" role="img" aria-label="Number die"></div></div>
+            <div class="die-slot"><div class="die col" id="dieCol" role="img" aria-label="Color cube"></div></div>
+          </div>
+          <div class="bench" id="bench">
+            <div class="bench-title" id="benchTitle">&nbsp;</div>
+            <div class="stack-wrap"><div class="stack" id="stack"></div><div class="bigcube-wrap" id="bigCubeWrap"></div></div>
+            <div class="bench-note" id="benchNote">&nbsp;</div>
+          </div>
+        </div>
+        <div class="actions" id="actions"></div>
+      </div>
+    </div>
+    <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ END ============ -->
+  <section id="screen-end" class="screen" aria-label="Game over">
+    <div class="end-wrap">
+      <div class="trophy" id="trophy" aria-hidden="true">🏆</div>
+      <h2 class="h2 end-title" id="endTitle">Winner!</h2>
+      <p class="end-sub" id="endSub"></p>
+      <div class="standings" id="standings"></div>
+      <div class="end-buttons">
+        <button class="btn btn-big btn-go" id="btn-again" type="button">Play again</button>
+        <button class="btn btn-soft" id="btn-home" type="button">Change players</button>
+      </div>
+    </div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ OVERLAYS ============ -->
+  <div class="overlay" id="overlay-pass" role="dialog" aria-modal="true" aria-label="Pass the device">
+    <div class="card pass-card">
+      <div class="pass-label">Pass the device to</div>
+      <div class="pass-avatar" id="passAvatar"></div>
+      <div class="pass-name" id="passName"></div>
+      <button class="btn btn-big btn-go" id="btn-pass-ok" type="button">I'm ready!</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-confirm" role="dialog" aria-modal="true" aria-label="Please confirm">
+    <div class="card confirm-card">
+      <div class="confirm-emoji" id="confirmEmoji">🤔</div>
+      <div class="confirm-title" id="confirmTitle"></div>
+      <div class="confirm-text" id="confirmText"></div>
+      <div class="confirm-buttons">
+        <button class="btn btn-soft" id="btn-confirm-no" type="button">Not yet</button>
+        <button class="btn btn-go" id="btn-confirm-yes" type="button">Yes!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay-how" role="dialog" aria-modal="true" aria-label="How to play">
+    <div class="card how-card">
+      <h2 class="h2">How to play</h2>
+      <ol class="how-list">
+        <li><b>Roll</b> the number die and the color cube.</li>
+        <li><b>Take</b> that many pieces of that color from the pool. (If the cube lands on a color that is all built, it rolls again by itself.)</li>
+        <li>Get <b>6 of one color</b> and they snap into a <b>cube</b>. Safe cubes are locked 🔒 and can never be stolen!</li>
+        <li>Or be sneaky and <b>steal</b> pieces of that color from another player's pile. Safe cubes can't be stolen, only loose pieces.</li>
+        <li>Behind in cubes? You get an <b>Underdog re-roll</b> 🔄.</li>
+        <li>When the <b>last piece</b> leaves the pool it's the <b>LAST LAP</b>: everyone gets one more turn. The game also ends if all <b>12 cubes</b> are built.</li>
+        <li>Most safe cubes wins! Tie? The player with the most colors wins, then the most loose pieces, then whoever built the last cube.</li>
+      </ol>
+      <button class="btn btn-big btn-go" id="btn-how-close" type="button">Got it!</button>
+    </div>
+  </div>
+</div>
+<script src="js/game.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>

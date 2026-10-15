@@ -1,0 +1,75 @@
+--- 2 players, N=3000 (smart mirror unless noted)
+0 ORIGINAL (as written)                 t/p 24.7 dead 41% dec 7% opts 0.7 tie 32% seat 54/47 steals 7.6 lead50 76% cb 9% maxLead 2.9 | smart>rand 75% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 33
+  single tweaks on the original:
+must-act (no declining a steal)         t/p 24.7 dead 41% dec 7% opts 0.7 tie 32% seat 54/47 steals 7.6 lead50 76% cb 9% maxLead 2.9 | smart>rand 59% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 33
+skip finished colors (re-roll cube)     t/p 14.1 dead 0% dec 11% opts 1.1 tie 42% seat 55/45 steals 7.9 lead50 71% cb 12% maxLead 2.5 | smart>rand 78% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 16.5
+take-or-steal any time                  t/p 27.8 dead 42% dec 28% opts 0.9 tie 32% seat 53/47 steals 11.9 lead50 77% cb 9% maxLead 3.0 | smart>rand 76% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 38.5
+tie-break (colors > loose > last cube)  t/p 24.7 dead 41% dec 7% opts 0.7 tie 0% seat 53/47 steals 7.6 lead50 69% cb 9% maxLead 2.9 | smart>rand 77% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 33
+underdog re-roll                        t/p 24.5 dead 44% dec 7% opts 0.6 tie 35% seat 52/48 steals 6.8 lead50 76% cb 8% maxLead 2.6 | smart>rand 76% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 33
+last lap when pool is empty             t/p 21.5 dead 35% dec 8% opts 0.7 tie 20% seat 54/46 steals 6.3 lead50 76% cb 6% maxLead 2.7 | smart>rand 72% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 28.5
+every player 1 re-roll/turn             t/p 24.3 dead 49% dec 6% opts 0.6 tie 33% seat 56/44 steals 5.8 lead50 77% cb 10% maxLead 2.9 | smart>rand 80% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 34
+roll 2+2, use one pair                  t/p 16.2 dead 25% dec 48% opts 1.3 tie 39% seat 56/44 steals 6.2 lead50 72% cb 11% maxLead 2.6 | smart>rand 85% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 20.5
+roll 2+2, mix any number+color          t/p 14.4 dead 24% dec 66% opts 2.3 tie 38% seat 56/44 steals 5.5 lead50 72% cb 10% maxLead 2.5 | smart>rand 89% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 18.5
+may take fewer than the die             t/p 24.7 dead 41% dec 41% opts 1.7 tie 32% seat 55/45 steals 7.5 lead50 76% cb 9% maxLead 2.9 | smart>rand 95% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 33
+roll again after exact cube             t/p 24.9 dead 41% dec 7% opts 0.7 tie 24% seat 56/44 steals 7.9 lead50 80% cb 8% maxLead 3.8 | smart>rand 75% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 34
+steal cap 3                             t/p 29.3 dead 43% dec 26% opts 0.9 tie 33% seat 53/47 steals 13.5 lead50 78% cb 8% maxLead 2.9 | smart>rand 80% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 41
+  combos:
+skip + must-act                         t/p 14.1 dead 0% dec 11% opts 1.1 tie 42% seat 55/45 steals 7.9 lead50 71% cb 12% maxLead 2.5 | smart>rand 58% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 16.5
+skip + must-act + anytime-steal         t/p 15.8 dead 0% dec 49% opts 1.6 tie 41% seat 54/46 steals 13.1 lead50 73% cb 10% maxLead 2.5 | smart>rand 73% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 19
+FINAL without last lap                  t/p 14.7 dead 0% dec 46% opts 1.6 tie 0% seat 50/50 steals 11.4 lead50 55% cb 11% maxLead 2.0 | smart>rand 76% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 18
+FINAL (+ last lap)                      t/p 14.6 dead 0% dec 47% opts 1.6 tie 0% seat 52/48 steals 11.2 lead50 59% cb 9% maxLead 2.0 | smart>rand 82% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 18
+FINAL without underdog                  t/p 15.7 dead 0% dec 50% opts 1.7 tie 0% seat 54/46 steals 12.7 lead50 68% cb 7% maxLead 2.5 | smart>rand 74% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 19
+FINAL but roll 2+2 pick pair            t/p 11.1 dead 0% dec 95% opts 2.9 tie 0% seat 54/46 steals 6.6 lead50 60% cb 7% maxLead 1.9 | smart>rand 94% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 13
+FINAL + every player 1 re-roll          t/p 13.0 dead 0% dec 43% opts 1.6 tie 0% seat 54/46 steals 9.6 lead50 63% cb 6% maxLead 2.1 | smart>rand 90% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 15.5
+FINAL + steal cap 4                     t/p 14.8 dead 0% dec 47% opts 1.6 tie 0% seat 51/49 steals 11.7 lead50 60% cb 8% maxLead 1.9 | smart>rand 82% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 18
+FINAL + roll-again on exact cube        t/p 15.1 dead 0% dec 50% opts 1.7 tie 0% seat 52/48 steals 12.7 lead50 60% cb 14% maxLead 3.2 | smart>rand 86% (fair 50) | stall hoard-mirror 0% mixed 0.0% p90 18
+--- 3 players, N=3000 (smart mirror unless noted)
+0 ORIGINAL (as written)                 t/p 24.2 dead 44% dec 17% opts 0.7 tie 21% seat 37/34/29 steals 18.6 lead50 72% cb 5% maxLead 2.1 | smart>rand 69% (fair 33) | stall hoard-mirror 72% mixed 0.0% p90 35
+  single tweaks on the original:
+must-act (no declining a steal)         t/p 24.2 dead 44% dec 17% opts 0.7 tie 21% seat 37/34/29 steals 18.6 lead50 72% cb 5% maxLead 2.1 | smart>rand 41% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 35
+skip finished colors (re-roll cube)     t/p 14.0 dead 0% dec 34% opts 1.4 tie 25% seat 38/34/28 steals 22.3 lead50 65% cb 9% maxLead 1.9 | smart>rand 75% (fair 33) | stall hoard-mirror 74% mixed 0.0% p90 18.666666666666668
+take-or-steal any time                  t/p 25.6 dead 45% dec 34% opts 1.1 tie 19% seat 36/35/29 steals 23.3 lead50 75% cb 4% maxLead 2.2 | smart>rand 73% (fair 33) | stall hoard-mirror 74% mixed 0.0% p90 36.333333333333336
+tie-break (colors > loose > last cube)  t/p 24.2 dead 44% dec 17% opts 0.7 tie 2% seat 37/34/29 steals 18.6 lead50 69% cb 4% maxLead 2.1 | smart>rand 69% (fair 33) | stall hoard-mirror 72% mixed 0.0% p90 35
+underdog re-roll                        t/p 22.4 dead 48% dec 14% opts 0.7 tie 22% seat 37/35/29 steals 14.7 lead50 72% cb 5% maxLead 1.9 | smart>rand 71% (fair 33) | stall hoard-mirror 67% mixed 0.0% p90 32.666666666666664
+last lap when pool is empty             t/p 14.5 dead 27% dec 19% opts 1.0 tie 30% seat 39/33/28 steals 11.4 lead50 68% cb 7% maxLead 1.9 | smart>rand 55% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 19.333333333333332
+every player 1 re-roll/turn             t/p 21.1 dead 52% dec 12% opts 0.6 tie 22% seat 39/34/27 steals 11.9 lead50 71% cb 5% maxLead 2.0 | smart>rand 74% (fair 33) | stall hoard-mirror 51% mixed 0.0% p90 31.666666666666668
+roll 2+2, use one pair                  t/p 14.5 dead 28% dec 51% opts 1.4 tie 24% seat 40/34/27 steals 13.4 lead50 69% cb 7% maxLead 1.9 | smart>rand 82% (fair 33) | stall hoard-mirror 45% mixed 0.0% p90 20.666666666666668
+roll 2+2, mix any number+color          t/p 11.8 dead 26% dec 66% opts 2.4 tie 24% seat 42/32/27 steals 10.4 lead50 65% cb 6% maxLead 1.8 | smart>rand 85% (fair 33) | stall hoard-mirror 25% mixed 0.0% p90 16
+may take fewer than the die             t/p 24.2 dead 44% dec 40% opts 1.5 tie 22% seat 37/34/29 steals 18.6 lead50 73% cb 5% maxLead 2.1 | smart>rand 92% (fair 33) | stall hoard-mirror 72% mixed 0.0% p90 35
+roll again after exact cube             t/p 25.0 dead 44% dec 17% opts 0.7 tie 17% seat 37/33/29 steals 19.5 lead50 79% cb 5% maxLead 2.8 | smart>rand 68% (fair 33) | stall hoard-mirror 76% mixed 0.0% p90 36.666666666666664
+steal cap 3                             t/p 35.0 dead 49% dec 32% opts 1.0 tie 21% seat 38/32/30 steals 33.3 lead50 79% cb 4% maxLead 2.2 | smart>rand 80% (fair 33) | stall hoard-mirror 78% mixed 0.0% p90 54.666666666666664
+  combos:
+skip + must-act                         t/p 14.0 dead 0% dec 34% opts 1.4 tie 25% seat 38/34/28 steals 22.3 lead50 65% cb 9% maxLead 1.9 | smart>rand 46% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 18.666666666666668
+skip + must-act + anytime-steal         t/p 14.9 dead 0% dec 64% opts 2.0 tie 22% seat 38/33/29 steals 27.8 lead50 69% cb 8% maxLead 2.0 | smart>rand 58% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 20
+FINAL without last lap                  t/p 13.1 dead 0% dec 61% opts 2.0 tie 4% seat 37/33/31 steals 23.0 lead50 55% cb 7% maxLead 1.7 | smart>rand 67% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 17
+FINAL (+ last lap)                      t/p 11.8 dead 0% dec 60% opts 2.0 tie 2% seat 36/34/31 steals 19.1 lead50 57% cb 6% maxLead 1.6 | smart>rand 67% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 14.666666666666666
+FINAL without underdog                  t/p 13.1 dead 0% dec 64% opts 2.0 tie 1% seat 37/34/29 steals 22.2 lead50 67% cb 5% maxLead 1.9 | smart>rand 59% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 16.333333333333332
+FINAL but roll 2+2 pick pair            t/p 8.5 dead 0% dec 97% opts 3.4 tie 3% seat 39/34/27 steals 11.3 lead50 61% cb 5% maxLead 1.6 | smart>rand 91% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 10.333333333333334
+FINAL + every player 1 re-roll          t/p 10.5 dead 0% dec 57% opts 2.0 tie 2% seat 39/34/27 steals 16.5 lead50 63% cb 5% maxLead 1.7 | smart>rand 83% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 13
+FINAL + steal cap 4                     t/p 12.3 dead 0% dec 61% opts 2.0 tie 2% seat 38/31/31 steals 20.6 lead50 57% cb 5% maxLead 1.6 | smart>rand 70% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 15.666666666666666
+FINAL + roll-again on exact cube        t/p 12.4 dead 0% dec 63% opts 2.0 tie 1% seat 36/34/30 steals 21.0 lead50 59% cb 11% maxLead 2.4 | smart>rand 69% (fair 33) | stall hoard-mirror 0% mixed 0.0% p90 15.333333333333334
+--- 4 players, N=3000 (smart mirror unless noted)
+0 ORIGINAL (as written)                 t/p 29.4 dead 49% dec 24% opts 0.8 tie 28% seat 29/28/23/20 steals 36.1 lead50 77% cb 4% maxLead 1.8 | smart>rand 64% (fair 25) | stall hoard-mirror 89% mixed 0.0% p90 46.25
+  single tweaks on the original:
+must-act (no declining a steal)         t/p 29.4 dead 49% dec 24% opts 0.8 tie 28% seat 29/28/23/20 steals 36.1 lead50 77% cb 4% maxLead 1.8 | smart>rand 33% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 46.25
+skip finished colors (re-roll cube)     t/p 17.5 dead 0% dec 56% opts 1.7 tie 28% seat 30/25/24/20 steals 50.7 lead50 69% cb 6% maxLead 1.7 | smart>rand 73% (fair 25) | stall hoard-mirror 89% mixed 0.0% p90 25.25
+take-or-steal any time                  t/p 29.9 dead 49% dec 36% opts 1.1 tie 28% seat 28/28/23/21 steals 40.2 lead50 76% cb 4% maxLead 1.9 | smart>rand 71% (fair 25) | stall hoard-mirror 90% mixed 0.0% p90 46
+tie-break (colors > loose > last cube)  t/p 29.4 dead 49% dec 24% opts 0.8 tie 3% seat 30/28/23/20 steals 36.1 lead50 73% cb 3% maxLead 1.8 | smart>rand 65% (fair 25) | stall hoard-mirror 89% mixed 0.0% p90 46.25
+underdog re-roll                        t/p 25.5 dead 54% dec 19% opts 0.7 tie 26% seat 29/25/24/21 steals 25.3 lead50 76% cb 3% maxLead 1.7 | smart>rand 70% (fair 25) | stall hoard-mirror 83% mixed 0.0% p90 41
+last lap when pool is empty             t/p 11.2 dead 21% dec 28% opts 1.2 tie 38% seat 30/25/24/21 steals 15.4 lead50 66% cb 5% maxLead 1.5 | smart>rand 44% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 14.75
+every player 1 re-roll/turn             t/p 22.6 dead 56% dec 16% opts 0.6 tie 27% seat 29/27/24/20 steals 19.6 lead50 75% cb 5% maxLead 1.7 | smart>rand 71% (fair 25) | stall hoard-mirror 74% mixed 0.2% p90 37.25
+roll 2+2, use one pair                  t/p 16.6 dead 34% dec 52% opts 1.5 tie 28% seat 32/26/23/19 steals 25.3 lead50 74% cb 3% maxLead 1.6 | smart>rand 79% (fair 25) | stall hoard-mirror 62% mixed 0.0% p90 25.75
+roll 2+2, mix any number+color          t/p 11.5 dead 30% dec 64% opts 2.5 tie 28% seat 31/27/23/19 steals 16.2 lead50 68% cb 5% maxLead 1.6 | smart>rand 82% (fair 25) | stall hoard-mirror 40% mixed 0.0% p90 17
+may take fewer than the die             t/p 29.3 dead 49% dec 40% opts 1.3 tie 28% seat 29/28/23/21 steals 36.0 lead50 76% cb 4% maxLead 1.8 | smart>rand 88% (fair 25) | stall hoard-mirror 89% mixed 0.0% p90 45.5
+roll again after exact cube             t/p 29.9 dead 49% dec 25% opts 0.8 tie 22% seat 30/26/24/20 steals 37.6 lead50 81% cb 4% maxLead 2.3 | smart>rand 63% (fair 25) | stall hoard-mirror 88% mixed 0.0% p90 46
+steal cap 3                             t/p 53.1 dead 55% dec 35% opts 1.0 tie 26% seat 28/27/22/22 steals 74.2 lead50 82% cb 2% maxLead 1.9 | smart>rand 80% (fair 25) | stall hoard-mirror 91% mixed 1.1% p90 90.25
+  combos:
+skip + must-act                         t/p 17.5 dead 0% dec 56% opts 1.7 tie 28% seat 30/25/24/20 steals 50.7 lead50 69% cb 6% maxLead 1.7 | smart>rand 39% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 25.25
+skip + must-act + anytime-steal         t/p 17.9 dead 0% dec 76% opts 2.2 tie 27% seat 29/26/24/21 steals 55.5 lead50 70% cb 6% maxLead 1.8 | smart>rand 52% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 26.5
+FINAL without last lap                  t/p 14.3 dead 0% dec 71% opts 2.2 tie 4% seat 28/26/25/21 steals 41.9 lead50 58% cb 5% maxLead 1.5 | smart>rand 61% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 20.75
+FINAL (+ last lap)                      t/p 10.2 dead 0% dec 69% opts 2.2 tie 3% seat 28/27/23/22 steals 25.5 lead50 56% cb 4% maxLead 1.4 | smart>rand 60% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 13.25
+FINAL without underdog                  t/p 11.6 dead 0% dec 72% opts 2.3 tie 1% seat 28/26/24/21 steals 30.3 lead50 64% cb 4% maxLead 1.6 | smart>rand 51% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 15
+FINAL but roll 2+2 pick pair            t/p 7.3 dead 0% dec 97% opts 3.8 tie 4% seat 30/27/24/19 steals 15.4 lead50 58% cb 4% maxLead 1.4 | smart>rand 88% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 9.25
+FINAL + every player 1 re-roll          t/p 9.1 dead 0% dec 65% opts 2.2 tie 3% seat 30/28/23/20 steals 22.2 lead50 60% cb 4% maxLead 1.5 | smart>rand 74% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 11.75
+FINAL + steal cap 4                     t/p 10.6 dead 0% dec 70% opts 2.3 tie 2% seat 29/25/25/21 steals 27.1 lead50 57% cb 3% maxLead 1.4 | smart>rand 61% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 14
+FINAL + roll-again on exact cube        t/p 10.7 dead 0% dec 71% opts 2.3 tie 2% seat 29/26/25/21 steals 27.5 lead50 58% cb 8% maxLead 2.0 | smart>rand 61% (fair 25) | stall hoard-mirror 0% mixed 0.0% p90 13.75
