@@ -12,9 +12,9 @@ with sync_playwright() as p:
     pg.on('pageerror', lambda e: errs.append('PAGEERROR '+str(e)))
     pg.add_init_script("""window.__toasts={cube:0,steal:0,lap:0};document.addEventListener('DOMContentLoaded',function(){new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.className&&String(n.className).indexOf('toast')>=0){var t=n.textContent;if(t.indexOf('cube built')>=0)window.__toasts.cube++;else if(t.indexOf('steals')>=0)window.__toasts.steal++;else if(t.indexOf('LAST LAP')>=0)window.__toasts.lap++;}})})}).observe(document.getElementById('fxLayer'),{childList:true});});""")
     for gi in range(games):
-        np_ = 2 + gi % 3
-        rnd = random.Random(1000+gi)
-        pg.goto(base + 'index.html?x=1' + ('&fast=1' if fast else '') + '&seed=%d' % (50+gi)); pg.wait_for_timeout(200)
+        np_ = 2 + (gi+int(__import__("os").environ.get("GOFF","0"))) % 3
+        rnd = random.Random(1000+gi+int(__import__("os").environ.get("GOFF","0")))
+        pg.goto(base + 'index.html?x=1' + ('&fast=1' if fast else '') + '&seed=%d' % (50+gi+int(__import__("os").environ.get("GOFF","0")))); pg.wait_for_timeout(200)
         s = play_game(pg, np_, touch, rnd)
         ok = (not s['board_errors']) and s['game']['completed']<=12 and s['game']['reason'] in ('All 12 cubes are built!','Last lap finished!') and s['end_wins']==len(s['game']['winners']) and sum(s['end_totals'])==s['game']['completed']
         tt = pg.evaluate('window.__toasts'); ok = ok and tt['cube']==s['game']['completed']

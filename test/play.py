@@ -34,10 +34,10 @@ def play_game(pg, np, touch, rnd, log=None, max_steps=3000, shots=None, steal_bi
         ph = phase(pg)
         sig = (ph, pg.evaluate("(window.__ccc.game()||{}).turnNo"), pg.evaluate("document.querySelectorAll('.choice').length"), pg.evaluate("document.getElementById('overlay-confirm').className"))
         if sig != lastsig: lastsig = sig; stuck_since = time.time()
-        if time.time() - stuck_since > 20: 
+        if time.time() - stuck_since > int(__import__("os").environ.get("STUCKS","20")): 
             if shots: pg.screenshot(path=shots+'_stuck.png')
             raise RuntimeError('STUCK in phase %s sig %s' % (ph, sig))
-        if on_step: on_step(pg, info)
+        if on_step: on_step(pg, {'ph': ph})
         if ph == 'end': break
         if pg.evaluate("document.getElementById('overlay-confirm').className.indexOf('show')>=0"):
             if rnd.random() < 0.2 and stats['cancels'] < 3:

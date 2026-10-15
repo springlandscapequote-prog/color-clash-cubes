@@ -426,7 +426,7 @@
     C.endTurn(g);
     S.busy = false;
     if (g.over) { later(T(500), showEnd); return; }
-    if (g.lastLapLeft !== undefined && !S.lapAnnounced) { S.lapAnnounced = true; toast('🏁 LAST LAP! The pool is empty. Everyone gets one more turn!', 'safe'); sfx.cube(); later(T(1900), function () { showPass(false); }); return; }
+    if (g.lastLapLeft !== undefined && !S.lapAnnounced) { S.lapAnnounced = true; toast('🏁 LAST LAP! The pool is empty. Everyone gets one more turn!', 'safe lap'); sfx.cube(); later(T(1900), function () { showPass(false); }); return; }
     later(T(300), function () { showPass(false); });
   }
 
