@@ -15,7 +15,7 @@ with sync_playwright() as p:
         rnd = random.Random(1000+gi)
         pg.goto(base + 'index.html?nosw=1' + ('&fast=1' if fast else '') + '&seed=%d' % (50+gi)); pg.wait_for_timeout(200)
         s = play_game(pg, np_, touch, rnd)
-        ok = (not s['board_errors']) and s['game']['completed']==12 and s['end_wins']==len(s['game']['winners']) and sum(s['end_totals'])==12
-        print(eng, W, H, 'game', gi, 'np', np_, 'turns', s['game']['turnNo'], 'steals', s['steals'], 'cancels', s['cancels'], 'rerolls', s['rerolls'], 'winners', s['game']['winners'], 'cubes', s['game']['cubes'], 'OK' if ok else 'FAIL', s['board_errors'][:2])
+        ok = (not s['board_errors']) and s['game']['completed']<=12 and s['game']['reason'] in ('All 12 cubes are built!','Last lap finished!') and s['end_wins']==len(s['game']['winners']) and sum(s['end_totals'])==s['game']['completed']
+        print(eng, W, H, 'game', gi, 'np', np_, 'turns', s['game']['turnNo'], 'ended', s['game']['reason'], 'built', s['game']['completed'], 'steals', s['steals'], 'cancels', s['cancels'], 'rerolls', s['rerolls'], 'winners', s['game']['winners'], 'cubes', s['game']['cubes'], 'OK' if ok else 'FAIL', s['board_errors'][:2])
     print('console problems:', errs[:5], len(errs))
     b.close()
