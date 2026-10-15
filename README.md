@@ -51,3 +51,4 @@ Same URL, always fresh:
 * On start, when the tab becomes visible again, on `pageshow`, and whenever the player returns to the title/setup/end screen, `js/update.js` fetches `version.json` (`cache:'no-store'`, `?t=Date.now()`) and compares it with the version baked into the running code.
 * Different version → from the **title screen** it reloads **once** by itself (sessionStorage flag prevents loops); on the setup/end screens it shows a big **"New version ready! Tap to refresh"** banner. **Never during a game in progress.** Offline or errors → silently ignored.
 * `index.html` has no-cache meta tags; older builds' service workers are unregistered.
+
