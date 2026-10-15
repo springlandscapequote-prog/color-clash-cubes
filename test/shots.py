@@ -23,16 +23,16 @@ with sync_playwright() as p:
       g.pool[0]-=4;g.piles[me][0]=4; g.pool[5]-=3;g.piles[o1][5]=3; g.pool[4]-=5; g.piles[o2][4]=5; g.pool[1]-=2; g.piles[o1][1]=2; g.pool[2]-=1;g.piles[me][2]=1;
       g.cubes[o2][3]=1; g.pool[3]-=6; g.completed=1; S.view={pool:g.pool.slice(),piles:g.piles.map(function(a){return a.slice()}),cubes:g.cubes.map(function(a){return a.slice()})};
       window.__forceRoll=[3,0];}""")
-    pg.tap('#btn-roll'); pg.wait_for_timeout(350); snap('04_rolling'); pg.wait_for_timeout(1600); snap('05_choose_take')
+    pg.tap('#btn-roll'); pg.wait_for_timeout(350); snap('04_rolling'); pg.wait_for_selector('.choice',timeout=20000); pg.wait_for_timeout(400); snap('05_choose_take')
     # take 3 yellow -> collecting stack, mid animation
     pg.tap('.choice[data-kind="take"]'); pg.wait_for_timeout(1000); snap('06_collecting_stack'); pg.wait_for_timeout(900); snap('06b_cube_built'); pg.wait_for_timeout(700); snap('06c_cube_celebration')
     wait_phase('pass')
     pg.tap('#btn-pass-ok'); pg.wait_for_timeout(200)
-    pg.evaluate("window.__forceRoll=[3,4]"); pg.tap('#btn-roll'); pg.wait_for_timeout(1700); snap('07_steal_choices')
+    pg.evaluate("window.__forceRoll=[3,4]"); pg.tap('#btn-roll'); pg.wait_for_selector('.choice',timeout=20000); pg.wait_for_timeout(400); snap('07_steal_choices')
     pg.tap('.choice[data-kind="steal"]'); pg.wait_for_timeout(400); snap('08_steal_confirm')
     pg.tap('#btn-confirm-yes'); pg.wait_for_timeout(500); snap('09_steal_anim')
     wait_phase('pass')
     pg.tap('#btn-pass-ok'); pg.wait_for_timeout(200)
-    pg.evaluate("window.__forceRoll=[2,0]"); pg.tap('#btn-roll'); pg.wait_for_timeout(1700); snap('10_choose_cube')
+    pg.evaluate("window.__forceRoll=[2,0]"); pg.tap('#btn-roll'); pg.wait_for_selector('.choice',timeout=20000); pg.wait_for_timeout(400); snap('10_choose_cube')
     print('errs',errs)
     b.close()

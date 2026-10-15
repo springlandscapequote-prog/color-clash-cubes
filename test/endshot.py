@@ -19,7 +19,7 @@ with sync_playwright() as p:
     state={'mid':False,'lap':False}
     def hook(pg, info):
         if not state['lap'] and pg.evaluate("(function(){var t=document.querySelectorAll('.toast');for(var i=0;i<t.length;i++){if(t[i].textContent.indexOf('LAST LAP')>=0)return true}return false})()"):
-            state['lap']=True; pg.wait_for_timeout(350); pg.screenshot(path=out+tag+'_last_lap_banner.png')
+            state['lap']=True; pg.wait_for_timeout(120); pg.screenshot(path=out+tag+'_last_lap_banner.png')
         if info['ph']=='pass':
             g=pg.evaluate("(function(){var g=window.__ccc.game();return {c:g.completed,lap:g.lastLapLeft!==undefined,turn:g.turnNo}})()")
             if g['c']>=5 and not state['mid']:
