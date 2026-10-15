@@ -74,6 +74,7 @@
     var ids = ['screen-title', 'screen-setup', 'screen-game', 'screen-end'], i;
     for (i = 0; i < ids.length; i++) { var n = $(ids[i]); if (ids[i] === id) addCls(n, 'active'); else rmCls(n, 'active'); }
     S.phase = id.replace('screen-', '');
+    if (window.CCCUpdate) { CCCUpdate.render(); if (id !== 'screen-game') CCCUpdate.check(false); }
   }
   function overlay(id, on_) { var n = $(id); if (on_) addCls(n, 'show'); else rmCls(n, 'show'); }
 
@@ -489,7 +490,12 @@
     document.addEventListener('gesturestart', function (e) { e.preventDefault(); });
     document.addEventListener('touchmove', function (e) { if (e.touches && e.touches.length > 1) e.preventDefault(); }, { passive: false });
     window.__ccc = { state: function () { return S; }, game: function () { return S.game; }, CCC: C, rules: RULES };
-    if ('serviceWorker' in navigator && /^https?:/.test(location.protocol) && !Q.nosw) { try { navigator.serviceWorker.register('sw.js'); } catch (e) {} }
+    if (window.CCCUpdate && !Q.noupdate) {
+      CCCUpdate.init({
+        inGame: function () { return hasCls($('screen-game'), 'active'); },
+        canAutoReload: function () { return hasCls($('screen-title'), 'active') && !hasCls($('overlay-how'), 'show'); }
+      });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

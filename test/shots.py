@@ -11,7 +11,7 @@ with sync_playwright() as p:
     def wait_phase(ph, to=15000):
         pg.wait_for_function("p=>window.__ccc.state().phase===p", arg=ph, timeout=to)
     def snap(n): pg.screenshot(path=out+tag+'_'+n+'.png')
-    pg.goto(base+'index.html?nosw=1&seed=11'); pg.wait_for_timeout(600); snap('01_title')
+    pg.goto(base+'index.html?x=1&seed=11'); pg.wait_for_timeout(600); snap('01_title')
     pg.tap('#btn-play'); pg.wait_for_timeout(300)
     pg.fill('.prow:nth-child(1) .pname','Gabi'); pg.fill('.prow:nth-child(2) .pname','Dad')
     pg.tap('.count-btn[data-n="3"]'); pg.fill('.prow:nth-child(3) .pname','Christina'); pg.tap('.prow:nth-child(1) .av-btn'); pg.wait_for_timeout(200); snap('02_setup')

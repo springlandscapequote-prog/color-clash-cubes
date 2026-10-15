@@ -31,7 +31,7 @@ Gabriela's core is untouched: one number die, one color cube, 72 pieces, 6 = a c
 
 ## Run it locally
 It is plain HTML/CSS/JS with no build step and no outside files: open `index.html`, or `python3 -m http.server`.
-Add `?seed=123` for a repeatable dice sequence, `?fast=1` for quick animations, `?nosw=1` to skip the offline cache.
+Add `?seed=123` for a repeatable dice sequence, `?fast=1` for quick animations.
 
 ## Code map
 | File | What |
@@ -41,6 +41,13 @@ Add `?seed=123` for a repeatable dice sequence, `?fast=1` for quick animations, 
 | `css/style.css` | Styles (old-Safari friendly: no `inset`, `:has`, `??`, `?.`; `100vh` then `100dvh`; safe-area insets; reduced-motion respected). |
 | `sim/` | Simulator, bots, results (`RESULTS.md`, `sweep-results.txt`). `node sim/test-engine.js` runs the rule checks. |
 | `test/` | Playwright scripts that play full games in the real UI (touch and mouse). |
-| `sw.js` | Tiny offline cache (network first). |
+| `js/update.js`, `version.json`, `stamp.sh`, `release.sh` | Always-newest-version machinery (below). |
 
 Names you type stay on the device (localStorage). Nothing is sent anywhere.
+
+## Always the newest version (no service worker)
+Same URL, always fresh:
+* `version.json` at the site root is stamped on **every push to main** by a GitHub Action (`.github/workflows/stamp.yml` runs `stamp.sh`; it also stamps `js/version.js` and the `?v=` on every script/CSS tag). You cannot forget it. To release by hand: `./release.sh "message"` (stamps, pushes, waits until the live site serves the new version).
+* On start, when the tab becomes visible again, on `pageshow`, and whenever the player returns to the title/setup/end screen, `js/update.js` fetches `version.json` (`cache:'no-store'`, `?t=Date.now()`) and compares it with the version baked into the running code.
+* Different version → from the **title screen** it reloads **once** by itself (sessionStorage flag prevents loops); on the setup/end screens it shows a big **"New version ready! Tap to refresh"** banner. **Never during a game in progress.** Offline or errors → silently ignored.
+* `index.html` has no-cache meta tags; older builds' service workers are unregistered.

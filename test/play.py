@@ -20,12 +20,13 @@ def board_ok(pg):
       return [msg.length===0, msg.join('; ')];
     }""")
 
-def play_game(pg, np, touch, rnd, log=None, max_steps=3000, shots=None, steal_bias=0.5, check=True):
+def play_game(pg, np, touch, rnd, log=None, max_steps=3000, shots=None, steal_bias=0.5, check=True, on_step=None, skip_setup=False):
     """Drive the UI from title to end screen. Returns stats dict."""
     tap = (lambda sel: pg.tap(sel)) if touch else (lambda sel: pg.click(sel))
     stats = dict(turns=0, steals=0, cubes=0, cancels=0, rerolls=0, board_errors=[], seen_choose=0)
-    tap('#btn-play'); pg.wait_for_timeout(100)
-    tap('.count-btn[data-n="%d"]' % np); tap('#btn-start')
+    if not skip_setup:
+        tap('#btn-play'); pg.wait_for_timeout(100)
+        tap('.count-btn[data-n="%d"]' % np); tap('#btn-start')
     steps = 0; last_phase = None; stuck_since = time.time(); lastsig = None
     while True:
         steps += 1
@@ -36,6 +37,7 @@ def play_game(pg, np, touch, rnd, log=None, max_steps=3000, shots=None, steal_bi
         if time.time() - stuck_since > 20: 
             if shots: pg.screenshot(path=shots+'_stuck.png')
             raise RuntimeError('STUCK in phase %s sig %s' % (ph, sig))
+        if on_step: on_step(pg, info)
         if ph == 'end': break
         if pg.evaluate("document.getElementById('overlay-confirm').className.indexOf('show')>=0"):
             if rnd.random() < 0.2 and stats['cancels'] < 3:
