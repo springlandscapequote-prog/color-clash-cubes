@@ -52,3 +52,4 @@ Same URL, always fresh:
 * Different version → from the **title screen** it reloads **once** by itself (sessionStorage flag prevents loops); on the setup/end screens it shows a big **"New version ready! Tap to refresh"** banner. **Never during a game in progress.** Offline or errors → silently ignored.
 * `index.html` has no-cache meta tags; older builds' service workers are unregistered.
 
+
